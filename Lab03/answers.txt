@@ -1,0 +1,12 @@
+Q1, Is JAVA a Pass by Value or a Pass by Reference programming language?
+-> Java is pass by value, not pass by reference. This means that when we pass a variable to a method, Java passes a copy of the variable, not the original reference itself:
+    +, For primitive data types (e.g., int, double, char), Java passes a copy of the actual value. Changes made to the parameter                inside the method do not affect the original variable outside the method.
+    +, When passing objects, Java still passes by value, but in this case, it passes the value of the reference to the object. This means the method receives a copy of the reference, which points to the same object in memory. If you modify the object's properties inside the method, those changes are reflected outside the method because both the original reference and the parameter point to the same object. However, if we reassign the parameter to a new object, the original reference remains unchanged.
+
+
+Q2,  Why Does the Title of jungleDVD and cinderellaDVD Remain the Same After swap(jungleDVD, cinderellaDVD)?
+-> Java is pass by value, even for objects. When you call swap(jungleDVD, cinderellaDVD), Java passes copies of the references to jungleDVD and cinderellaDVD to the swap() method. Inside the method, o1 and o2 are local variables that hold these copies. The swap() method swaps the local references o1 and o2 only. This swap does not affect the original references jungleDVD and cinderellaDVD in the main() method. After swap() completes, jungleDVD and cinderellaDVD in main() still refer to their original objects, so their titles remain "Jungle" and "Cinderella", respectively.
+
+Q3, Why Is the Title of jungleDVD Changed After changeTitle(jungleDVD, cinderellaDVD.getTitle())?
+-> When changeTitle(jungleDVD, cinderellaDVD.getTitle()) is called, a copy of the reference to jungleDVD is passed to the method. Inside changeTitle(), the dvd parameter refers to the same object as jungleDVD, so modifying the object's attributes (e.g., calling dvd.setTitle(title)) affects the original object. The line dvd.setTitle(title) changes the title attribute of the object that jungleDVD points to. This change is visible outside the method because the method modifies the actual object in memory.
+
